@@ -18,36 +18,57 @@ args.forEach(function (arg) {
   if (problem) problem();
 });
 
+
+
+
+
+
 function problemA() {
   // callback version
-  exerciseUtils.readFile("poem-one/stanza-02.txt", function (err, stanza2) {
+  /* exerciseUtils.readFile("poem-one/stanza-02.txt", function (err, stanza2) {
     exerciseUtils.blue(stanza2);
     exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
       exerciseUtils.blue(stanza3);
     });
-  });
+  }); */
 
   // promise version
   // Tu código acá:
+  exerciseUtils.promisifiedReadFile("poem-one/stanza-02.txt") // NOS RETORNA UNA PROMESA, entonces trabajamos con .the
+  .then((stanza2)=>{
+    exerciseUtils.blue(stanza2)
+    return exerciseUtils.promisifiedReadFile("poem-one/stanza-03.txt")
+    .then((stanza3)=>exerciseUtils.blue(stanza3))
+  })
+ 
+
 }
+
+
+
+
+
 
 function problemB() {
   // callback version
-  exerciseUtils.readFile(
+  /* exerciseUtils.readFile(
     "poem-one/wrong-file-name.txt",
     function (err, stanza4) {
       if (err) exerciseUtils.magenta(new Error(err));
       else exerciseUtils.blue(stanza4);
     }
-  );
+  ); */
 
   // promise version
   // Tu código acá:
+  exerciseUtils.promisifiedReadFile("poem-one/stanza-04.txt") // "poem-one/wrong-file-name.txt" o "poem-one/stanza-04.txt"
+  .then((stanza4)=>exerciseUtils.blue(stanza4))            // succes handler
+  .catch((error)=>exerciseUtils.magenta(new Error(error))) // error handler,  ojo con new Error
 }
 
 function problemC() {
   // callback version
-  exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
+  /* exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
     if (err) return exerciseUtils.magenta(new Error(err));
     exerciseUtils.blue(stanza3);
     exerciseUtils.readFile(
@@ -57,7 +78,7 @@ function problemC() {
         exerciseUtils.blue(stanza4);
       }
     );
-  });
+  }); */
 
   // promise version
   // Tu código acá:

@@ -12,19 +12,19 @@ module.exports = {
 };
 
 // corre cada problema dado como un argumento del command-line para procesar
-args.forEach(function (arg) {
+/* args.forEach(function (arg) {
   let problem = module.exports["problem" + arg];
   if (problem) problem();
-});
+}); */
 
 function problemA() {
   // callback version
-  exerciseUtils.readFile("poem-two/stanza-01.txt", function (err, stanza) {
+ /*  exerciseUtils.readFile("poem-two/stanza-01.txt", function (err, stanza) {
     exerciseUtils.blue(stanza);
   });
   exerciseUtils.readFile("poem-two/stanza-02.txt", function (err, stanza) {
     exerciseUtils.blue(stanza);
-  });
+  }); */
 
   // promise version
   // Tu código acá:
@@ -38,13 +38,13 @@ function problemB() {
   filenames[randIdx] = "wrong-file-name-" + (randIdx + 1) + ".txt";
 
   // callback version
-  filenames.forEach((filename) => {
+  /* filenames.forEach((filename) => {
     exerciseUtils.readFile(filename, function (err, stanza) {
       exerciseUtils.blue(stanza);
       if (err) exerciseUtils.magenta(new Error(err));
     });
   });
-
+ */
   // promise version
   // Tu código acá:
 }
