@@ -82,4 +82,11 @@ function problemC() {
 
   // promise version
   // Tu código acá:
+
+  exerciseUtils.promisifiedReadFile("poem-one/stanza-03.txt")
+  .then((stanza3)=>{exerciseUtils.blue(stanza3)
+    return (exerciseUtils.promisifiedReadFile("poem-one/stanza-04.txt")
+    .then((stanza4)=>exerciseUtils.blue(stanza4)))
+  })
+  .catch((error)=> exerciseUtils.magenta(new Error(error)))
 }
